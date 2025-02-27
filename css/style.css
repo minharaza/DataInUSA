@@ -1,11 +1,12 @@
-/* Reset defaults, fill screen, etc. */
+/* Reset default margin/padding and fill the screen */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* optional: no scroll */
-  font-family: sans-serif;
+  overflow: hidden; /* No scrolling, if you want a fixed layout */
+  font-family: "Open Sans", sans-serif; /* or another modern sans-serif */
   box-sizing: border-box;
+  background-color: #fafafa; /* Light background for a sleek look */
 }
 
 /* 
@@ -20,56 +21,118 @@ body {
   grid-template-rows: auto 1fr 1fr; /* 3 rows total */
   grid-template-columns: 1fr 1fr;   /* 2 equal-width columns */
   height: 100vh;
+  color: #333; /* Dark gray text color */
 }
 
 /* Header spans both columns (col 1 to col 3) */
 header {
   grid-column: 1 / 3;
   background-color: #f1f1f1;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle header shadow */
+}
+
+/* Give the header's h1 a modern look */
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #444;
+}
+header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 /* 1) Bar chart: left column, spanning rows 2 and 3 */
 #county-bar-chart-section {
   grid-row: 2 / 4; /* spans row 2 and row 3 */
   grid-column: 1;  /* left column */
-  overflow: auto;  /* allow scrolling if it’s too tall */
-  padding: 10px;
+  overflow: auto;  /* allow scrolling if content is too tall */
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08); /* subtle shadow on sections */
+  background-color: #fff;               /* white card-like background */
+  margin: 10px;
+  border-radius: 6px; /* slight rounding */
 }
 
 /* 2) Scatter Plot: row 2, right column */
 #scatter-section {
-  grid-row: 2;  /* only row 2 */
+  grid-row: 2;  
   grid-column: 2; 
   overflow: auto;
-  padding: 10px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 6px;
 }
 
 /* 3) Map: row 3, right column */
 #map-section {
-  grid-row: 3; /* only row 3 */
+  grid-row: 3; 
   grid-column: 2;
   overflow: auto;
-  padding: 10px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 6px;
 }
 
-/* Some styling for headings, etc. */
+/* Section headings */
 section h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
 }
 
-/* Example tooltip styling if you have a .tooltip class */
+/* Paragraph or other text within sections */
+section p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+/* A modern style for labels, inputs, and selects */
+section label {
+  font-weight: 500;
+  margin-right: 5px;
+}
+section select,
+section input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.9rem;
+  margin-right: 10px;
+  color: #333;
+}
+section select:focus,
+section input[type="text"]:focus {
+  outline: none;
+  border-color: #999;
+}
+
+/* Example tooltip styling */
 .tooltip {
   position: absolute;
-  padding: 5px 10px;
-  background: rgba(0,0,0,0.7);
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.8);
   color: #fff;
   font-size: 0.85rem;
   border-radius: 4px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  z-index: 9999; /* ensure tooltip is on top */
+}
+.tooltip.show {
+  opacity: 1;
 }
