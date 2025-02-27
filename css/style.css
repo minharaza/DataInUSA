@@ -1,0 +1,75 @@
+/* Reset defaults, fill screen, etc. */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* optional: no scroll */
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* 
+   We have 3 rows:
+   - Row 1: auto height for header
+   - Row 2: 1fr
+   - Row 3: 1fr
+   We have 2 columns: each is 1fr (50% of width each).
+*/
+body {
+  display: grid;
+  grid-template-rows: auto 1fr 1fr; /* 3 rows total */
+  grid-template-columns: 1fr 1fr;   /* 2 equal-width columns */
+  height: 100vh;
+}
+
+/* Header spans both columns (col 1 to col 3) */
+header {
+  grid-column: 1 / 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 1) Bar chart: left column, spanning rows 2 and 3 */
+#county-bar-chart-section {
+  grid-row: 2 / 4; /* spans row 2 and row 3 */
+  grid-column: 1;  /* left column */
+  overflow: auto;  /* allow scrolling if it’s too tall */
+  padding: 10px;
+}
+
+/* 2) Scatter Plot: row 2, right column */
+#scatter-section {
+  grid-row: 2;  /* only row 2 */
+  grid-column: 2; 
+  overflow: auto;
+  padding: 10px;
+}
+
+/* 3) Map: row 3, right column */
+#map-section {
+  grid-row: 3; /* only row 3 */
+  grid-column: 2;
+  overflow: auto;
+  padding: 10px;
+}
+
+/* Some styling for headings, etc. */
+section h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Example tooltip styling if you have a .tooltip class */
+.tooltip {
+  position: absolute;
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Visualization Project</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Visualization of Poverty &amp; Education Level</h1>
+    <p>By: Minha Raza | Data Source: National Health Data 2024 | Libraries Used: D3.js</p>
+  </header>
+
+  <!-- Scatter Plot Section (Will appear in the middle via CSS) -->
+  <section id="scatter-section">
+    <h2>Scatter Plot</h2>
+    <div id="scatter-filters">
+      <label for="region-select">Select Region:</label>
+      <select id="region-select">
+        <option value="All">All</option>
+        <option value="West">West</option>
+        <option value="Northeast">Northeast</option>
+        <option value="Midwest">Midwest</option>
+        <option value="South">South</option>
+      </select>
+      <label for="state-filter">Search State:</label>
+      <input type="text" id="state-filter" placeholder="Enter state name or abbreviation">
+      <!-- New dropdown for selecting x-axis metric (if needed) -->
+      <label for="x-axis-select">X-Axis Metric:</label>
+<select id="x-axis-select">
+  <option value="poverty_perc">Poverty Percentage</option>
+  <option value="median_household_income">Median Household Income</option>
+  <option value="education_less_than_high_school_percent">Education &lt; High School (%)</option>
+  <option value="elderly_percentage">Elderly Percentage</option>
+  <option value="number_of_hospitals">Number of Hospitals</option>
+  <option value="number_of_primary_care_physicians">Number of Primary Care Physicians</option>
+  <option value="percent_no_heath_insurance">Percent No Health Insurance</option>
+</select>
+
+<label for="y-axis-select">Y-Axis Metric:</label>
+<select id="y-axis-select">
+  <option value="poverty_perc">Poverty Percentage</option>
+  <option value="median_household_income">Median Household Income</option>
+  <option value="education_less_than_high_school_percent">Education &lt; High School (%)</option>
+  <option value="elderly_percentage">Elderly Percentage</option>
+  <option value="number_of_hospitals">Number of Hospitals</option>
+  <option value="number_of_primary_care_physicians">Number of Primary Care Physicians</option>
+  <option value="percent_no_heath_insurance">Percent No Health Insurance</option>
+</select>
+
+        <!-- Add additional options as desired -->
+      </select>
+    </div>
+    <div id="scatter-chart"></div>
+  </section>
+
+
+  <!-- Map Section (Will appear on the right via CSS) -->
+  <section id="map-section">
+    <h2>Map</h2>
+    <div id="map-filters">
+      <label for="map-metric-select">Select Map Metric:</label>
+      <select id="map-metric-select">
+        <option value="poverty_perc">Poverty Percentage</option>
+        <option value="education_less_than_high_school_percent">Less Than HS</option>
+        <option value="both">Both</option>
+      </select>
+    </div>
+    <div id="map-container"></div>
+  </section>
+
+  <!-- County Bar Chart Section (Will appear on the LEFT via CSS) -->
+  <section id="county-bar-chart-section">
+    <h2>County Rates</h2>
+    <div id="county-filter">
+      <label for="county-state-select">Select State:</label>
+      <select id="county-state-select">
+        <option value="">--Select State--</option>
+      </select>
+      <label for="county-metric-select">Select Metric:</label>
+      <select id="county-metric-select">
+        <option value="poverty_perc">Poverty Percentage</option>
+        <option value="median_household_income">Median Household Income</option>
+        <option value="education_less_than_high_school_percent">Education &lt; High School (%)</option>
+        <option value="number_of_hospitals">Number of Hospitals</option>
+        <option value="number_of_primary_care_physicians">Number of Primary Care Physicians</option>
+        <option value="percent_no_heath_insurance">Percent No Health Insurance</option>
+
+        <option value="both">Both</option>
+      </select>
+    </div>
+    <div id="county-bar-chart"></div>
+  </section>
+
+  <!-- Load D3 and TopoJSON from CDN -->
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+  <!-- Load main JS file -->
+  <script src="js/main.js"></script>
+</body>
+</html>
